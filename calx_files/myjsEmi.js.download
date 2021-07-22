@@ -1,0 +1,381 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/* global google, Highcharts */
+const  months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+var j=1;
+var no_of_months;
+var table;
+var year_graph;
+var dual_totalpayment;
+var dual_axis_end_balance;
+function checkMonth (){
+    if(document.getElementById('month').checked){
+        var x = document.getElementById('period').value;
+//        console.log("Month");
+//        var x = document.getElementById('period').value;
+        computeloan(x);
+    }
+    else{
+//        console.log("year");
+        var x = document.getElementById('period').value;
+        //console.log(x);
+        x*=12;
+//        document.getElementById('period').value=x/12;
+        computeloan(x);
+        
+    }
+}
+function validate(){
+    var x=document.getElementById('amount_input').value;
+//    var x=parseInt(x);
+var x=isNaN(x);
+//    console.log(x);
+    
+    if(x === true){
+//        console.log('invalid');
+        $("#amount_input").val(1);
+        checkMonth();
+    }
+    else{
+//        computeloan();
+        checkMonth();
+    }
+}
+
+
+
+function computeloan(period){
+    year_graph=[];
+    dual_totalpayment=[];
+    dual_axis_end_balance=[];
+    var principal=document.getElementById('amount_input').value;
+  
+    var rate=document.getElementById('percent').value;
+//    var no_of_months=document.getElementById('period').value;
+    var no_of_months=period;
+//    console.log(principal + ' '+ rate +''+ no_of_months);
+    var effectiveRate = rate/1200;
+    var emi = [principal * effectiveRate * Math.pow(1 + effectiveRate,no_of_months)] / [Math.pow(1+effectiveRate,no_of_months)-1];
+    var total_amount = no_of_months * emi;
+    
+    var total_Interest = total_amount - principal;
+//  console.log( "  ddd " + emi + ' '+ total_amount +''+ total_Interest);
+//    document.getElementById('output').innerHTML= 'EMI =' + Math.round(emi) + ' ' + 'Total Payment = ' +Math.round(total_amount) + ' Total_Interst = ' + Math.round(total_Interest);
+    var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Amount');
+        data.addColumn('number', 'value');
+        data.addRows([
+          ['total interest', total_Interest],
+          ['Total Amount', total_amount]
+          
+        ]);
+
+        var piechart_options = {title:'Break-up of total payment',
+                       width:300,
+                       height:280};
+        var piechart = new google.visualization.PieChart(document.getElementById('output'));
+        piechart.draw(data, piechart_options);
+
+//        var barchart_options = {title:'Break-up of total payment',
+//                       width:400,
+//                       height:300,
+//                       legend: 'none'};
+//        var barchart = new google.visualization.BarChart(document.getElementById('output_bar'));
+//        barchart.draw(data, barchart_options);    
+
+var beginingAmonut = principal;
+var i=0;
+    
+    //   console.log('zia');
+    table='';
+    table +='<table>';
+    table+='<tr><th>'+ 'Year' +'</th>';
+    table+='<th>'+'Principal Paid' +'</th>';
+    table+='<th>'+ 'Ending Balance' +'</th>';
+    table+='<th>'+ 'Interest Paid' +'</th>';
+    table+='<th>'+ 'EMI' +'</th></tr>';
+    table+='<tbody>';
+    
+    
+    
+    var sum_principal=0;
+    var sum_interest=0;
+    var sum_ending_balance=0;
+    
+
+    
+
+
+while(i < no_of_months){
+    var IntPaid=beginingAmonut * effectiveRate;
+    var principalPaid = emi - Math.abs(IntPaid);
+    var endingAmount = beginingAmonut - principalPaid;
+    beginingAmonut = endingAmount;
+    //document.getElementById('test').innerHTML= 'Amortization Table';
+    //document.getElementById('mort').innerHTML = 'INTPAID = '+ IntPaid.toFixed(2)  + '  ' + ' ' + 'Principal paid = ' + principalPaid.toFixed(2) + ' ' + 'Ending amount = ' + beginingAmonut.toFixed(2) + ' ==EMI== ' + emi.toFixed(2) ;
+    
+         var mont = dateAction(i);
+         
+            sum_principal+=principalPaid;
+            sum_interest+=IntPaid;
+//            sum_ending_balance+=endingAmount;
+//            tempmonth=tempmonth - 1;
+//            console.log(mont.getFullYear()); 
+//            console.log(i + ' '+ tempmonth );
+            
+            if(mont.getMonth()==11  ||  i==no_of_months-1){
+            
+            console.log(mont.getFullYear()+' ' +Math.round(sum_interest) +' ' + Math .round(sum_principal) + ' ' + Math.abs(Math.round(endingAmount)));
+            var total_dual_amount= sum_interest + sum_principal;
+            year_graph.push(mont.getFullYear());
+            
+            dual_totalpayment.push(Math.round(total_dual_amount));
+            dual_axis_end_balance.push(Math.round(endingAmount));
+            
+//          
+//            dual_axis_chart(dual_totalpayment,year_graph);
+            sum_interest=0;
+            sum_principal=0;
+            
+        }
+         
+
+//        console.log(mont.getFullYear());
+        //console.log('INTPAID = '+ IntPaid.toFixed(2)  + '  ' + ' ' + 'Principal paid = ' + principalPaid.toFixed(2) + ' ' + 'Ending amount = ' +Math.abs(beginingAmonut.toFixed(2))  + ' ==EMI== ' + emi.toFixed(2));
+        buildTable(mont,IntPaid,principalPaid,endingAmount,emi);
+//        makeTable(IntPaid,principalPaid,endingAmount,mont,emi);    
+        
+        
+        //console.log('/n');
+i++;
+}
+
+table+='</tbody>';
+table+='</table>';
+dual_axis_chart();
+    
+document.getElementById('divtable').innerHTML=table;
+
+
+}
+
+function dateAction(i){
+   var today=new Date();
+   //var year=;
+   var mn = new Date(today.getFullYear(),today.getMonth() + i);
+   
+//   console.log(months[mn.getMonth()]);
+   
+    return mn;
+//    return mn.getFullYear() + ' ' + months[mn.getMonth()];
+}
+ 
+//function makeTable(IntPaid,principalPaid,endingAmount,mont,emi){
+//    //console.log(IntPaid + principalPaid + endingAmount + rowsize); 
+//    var table=document.getElementById("tableid");
+//     var tr=document.createElement('tr');
+//         
+//                    var td= document.createElement('td');
+//                    var td2= document.createElement('td');
+//                    var td3= document.createElement('td');
+//                    var td4= document.createElement('td');
+//                    var td5= document.createElement('td');
+//                    var text= document.createTextNode(mont);
+//                    var text2= document.createTextNode(emi.toFixed(2));
+//                    var text3= document.createTextNode(IntPaid.toFixed(2));
+//                    var text4= document.createTextNode(principalPaid.toFixed(2));
+//                    var text5= document.createTextNode(Math.abs(endingAmount.toFixed(2)));
+//                    
+//                    td.appendChild(text);
+//                    tr.appendChild(td);
+//                    td2.appendChild(text2);
+//                    tr.appendChild(td2);
+//                    td3.appendChild(text3);
+//                    tr.appendChild(td3);
+//                    td4.appendChild(text4);
+//                    tr.appendChild(td4);
+//                    td5.appendChild(text5);
+//                    tr.appendChild(td5);
+//         
+//         table.appendChild(tr);
+//         
+//     
+//     
+//     }    
+ function buildTable(mont,principalpaid,emi,interestPaid,endingAmount){
+     
+     
+    table+='<tr><td>'+ mont.getFullYear() + ' '+ months[mont.getMonth()] +'</td>'+'<td>'+ Math.round(emi.toFixed(2)) +'</td>'+ '<td>'+ Math.round(interestPaid.toFixed(2))  +'</td>'+'<td>'+ Math.round(principalpaid.toFixed(2)) +'</td>'+ '<td>'+ Math.round(Math.abs(endingAmount.toFixed(2)))  +'</td></tr>';
+   // table+='<td>'+ principalpaid.toFixed(2) +'</td>';
+    //table+='<td>'+ Math.abs(endingAmount.toFixed(2)) +'</td>';
+    //table+='<td>'+ emi.toFixed(2) +'</td>';
+    
+    
+    //table+='<td>'+ interestPaid.toFixed(2) +'</td></tr>';
+     
+     
+ }
+function year(){
+    
+    var x=document.getElementById("period").value;
+//    var test=parseFloat(x);
+//    console.log(x + 'sssssssss');
+    document.getElementById('period').value=x / 12;
+}
+function month(){
+    
+    var x=document.getElementById("period").value;
+    document.getElementById('period').value=x*12;
+    
+           
+}
+
+function dual_axis_chart() {
+var  yAxisopposite= [0];
+var yAxisLabels=[0];
+//    console.log("sss"+Math.max(...dual_axis_end_balance) );
+
+let max_dual_payment= Math.max(...dual_totalpayment);
+    console.log("gsgdh = "+max_dual_payment);
+    
+        var max_end_balance = Math.max(...dual_axis_end_balance);
+        var  end_balance_round = Math.ceil(max_end_balance/100)*100;
+    var total_payment_round = Math.ceil(max_dual_payment/100)*100;
+//    console.log(end_balance_round);
+//    console.log("hsgdh "+total_payment_round);
+    end_balance_round=end_balance_round/5;
+    total_payment_round/=5;
+//    console.log(end_balance_round);
+    let end=0;
+    let total_payment=0;
+    for(let i=0; i<5; i++){
+                
+                        end= end+end_balance_round;
+                        total_payment=total_payment+total_payment_round;
+                        
+        yAxisLabels.push(end);
+        yAxisopposite.push(total_payment);
+        
+    }
+    
+
+
+    Highcharts.chart('container', {
+    
+    title: {
+        text: 'Your Repayment Details (Yearly/Monthly)'
+    },
+    subtitle: {
+        text: 'Your debt repayment schedule in regular instalments over a period of time.'
+    },
+    xAxis: {
+        labels: {
+//                enabled: true,
+                formatter: function () {
+                    return year_graph[this.value];
+                }
+               },
+               tickmarkPlacement: 'on',
+            title: {
+                enabled: true
+            }
+        ,crosshair: true
+    },
+        yAxis: [{ // Primary yAxis
+        
+        labels: {
+            formatter: function(){
+                if (this.isFirst) {
+          i = -1;
+        }
+        i++;
+                  return yAxisLabels[i];
+              }  ,
+            
+                 tickPositioner: function() {
+                     if (this.isFirst) {
+          i = -1;
+        }
+        i++;
+                    return yAxisLabels[i];
+                },
+            
+                        
+                        style: {
+                color: Highcharts.getOptions().colors[1]
+             }
+        },
+        title: {
+            text: 'Balance ',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        }
+    }, 
+    { // Secondary yAxis
+        title: {
+            text: 'Emi Payment/Year',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        labels: {
+                formatter: function(){
+                    if (this.isFirst) {
+          i = -1;
+        }
+        i++;
+                  return yAxisopposite[i];
+              },
+            
+                 tickPositioner: function() {
+                     if (this.isFirst) {
+          i = -1;
+        }
+        i++;
+                    return yAxisopposite[i];
+                }
+        },
+        opposite: true
+    }],
+    tooltip: {
+        shared: true
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 120,
+        verticalAlign: 'top',
+        y: 100,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || // theme
+            'rgba(255,255,255,0.25)'
+    },
+    
+            series: [{
+                    
+        name: 'total payment',
+        type: 'column',
+        yAxis: 1,
+        data:dual_totalpayment,
+        tooltip: {
+            valueSuffix: ' mm'
+        }
+
+    }, 
+    {
+        name: 'Balance',
+        type: 'spline',
+        data: dual_axis_end_balance,
+        tooltip: {
+//            valueSuffix: '°C'
+        }
+    }]
+});
+};

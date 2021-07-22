@@ -1,0 +1,205 @@
+aside nav a {
+    padding: 0 12px;
+    display: block;
+    overflow: hidden;
+    font-size: 16px;
+    background: #ccc;
+    font-weight: 700;
+    line-height: 26px;
+    color: black;
+}
+article {
+    margin: 8px 16px;
+    padding: 8px;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+
+.wraper p a{
+    font-size: 1.1em;
+}
+/*.header nav ul li a:active{
+        color: #606060;
+    background: linear-gradient(135deg,#fff 0%,silver 100%);*/
+
+.sidebar {float:left;width:250px;padding:70px 0 35px 0;}
+
+.grey_textarea{
+    background-color: #d9d9d9 !important;
+}
+.bull1{
+    margin-left: 2em;
+}
+.aboutmod{
+    margin-left: 1em;
+    font-size: 11px;
+    color: #bbbaba;
+}
+/*EMI CALCULATOR CSS------------------------------------------------*/
+#amount label{
+/*    margin-right: 30px;*/
+    color: #434242;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2;
+    
+}
+#amount input{
+    width: 85%;
+    font-size: 18px;
+    border: 2px solid #434242;
+   font-weight: bold;
+   line-height: 28.5px;
+   
+    
+}
+#rate input{
+    width: 85%;
+    line-height: 28.5px;
+    border: 2px solid #434242;
+    font-weight: bold;
+    font-size: 18px;
+}
+#tenure input{
+    width: 85%;
+    line-height:28.5px;
+    border: 2px solid #434242;
+    font-weight: bold;
+    font-size: 18px;
+    
+}
+#rate label{
+    line-height: 2;
+    
+    font-size: 14px;
+    font-weight: bold;
+    color: #434242;
+    
+}
+
+#tenure label{
+    line-height: 2;
+    color: #434242;
+    font-size: 14px;
+    font-weight: bold;
+}
+#tab-2{
+    width: 450px;
+}
+/*#tab-3{
+    position: relative;
+    top: 15px;
+}*/
+#amount img{
+    padding-right:  1px;
+}
+#rate img{
+    padding-right:  1px;
+}
+#tenure img{
+    padding-right:  2px;
+}
+table,td {
+  border: 3px solid #5eafcd;
+  
+}
+th{
+    font-size: 18px;
+    font-weight: bold;
+    background-color:#5eafcd;
+    color: white;
+    height: 50px;
+    border:2px solid black;
+}
+td{
+    text-align: center;
+    color: black;
+    height: 25px;
+    font-size: 16px;
+    
+    
+}
+tr:nth-child(even) 
+{
+    background-color: #f2f2f2;
+}
+#output{
+    display: inline-block;
+}
+
+/*.slidermain{
+    width: 80%;
+    margin: 5% auto;
+    position: relative;
+}*/
+/*#slider{
+    width: 100%;
+    -webkit-appearance: none;
+    height: 7px;
+    outline:none;
+    border-radius: 3px;
+    background-color: black;
+    
+}
+#slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+}*/
+#selector{
+    width: 85%;
+    background-color: #434242;
+    
+        
+}
+#selector_rate{
+    width: 85%;
+    background-color: #434242;
+}
+#selector_tenure{
+    width: 85%;
+    background-color: #434242;
+}
+/*.selectBtn{
+    height: 21px; 
+    width: 21px;
+    background-color: black;
+    background-position: center;
+    border-radius: 20%;
+    position: absolute;
+    bottom: 0;
+}*/
+
+
+#tab-2 div input{
+    width: 85%;
+}
+#tab-3 div input{
+    width: 85%;
+}
+#output{
+    margin-top:  50px;
+    border: 1px solid black;
+    float: right;
+    position: relative;
+    text-align: left;
+    
+/*    width: 300px;
+    height: 200px;*/
+}
+/*#output2{
+    margin-top:  50px;
+    height: 50px;
+    border: 1px solid black;
+    float: right;
+    position: relative;
+    bottom: 100px;
+    text-align: left;
+}*/
+#divtable{
+    position: relative;
+    right: 10px;
+}

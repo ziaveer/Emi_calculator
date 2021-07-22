@@ -1,0 +1,1670 @@
+<html lang="en">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Emi Calculator</title>
+
+    <link href="./calx_files/css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./calx_files/style.css" />
+    <link rel="stylesheet" href="./calx_files/responsive.css" />
+    <link rel="stylesheet" href="./calx_files/mymod.css" />
+
+    
+
+    <script
+      src="./calx_files/myjs.js.download"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <link rel="stylesheet" href="./calx_files/jquery-ui.css" />
+
+
+    <script
+      src="./calx_files/jquery-1.12.4.js.download"
+      type="text/javascript"
+    ></script>
+    <script
+      src="./calx_files/jquery-ui.js.download"
+      type="text/javascript"
+    ></script>
+
+    <script
+      src="./calx_files/myjsEmi.js.download"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="./calx_files/loader.js.download"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["corechart"] });
+      google.charts.setOnLoadCallback(computeloan());
+    </script>
+
+    <!-- High charts -->
+
+    <style>
+      .highcharts-figure,
+      .highcharts-data-table table {
+        min-width: 310px;
+        max-width: 800px;
+        margin: 1em auto;
+      }
+
+      #container {
+        height: 400px;
+      }
+
+      .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+      }
+      .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+      }
+      .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+      }
+      .highcharts-data-table td,
+      .highcharts-data-table th,
+      .highcharts-data-table caption {
+        padding: 0.5em;
+      }
+      .highcharts-data-table thead tr,
+      .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+      }
+      .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+      }
+      header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+    </style>
+
+    
+  </head>
+  <body onload="validate()">
+    <div class="wraper">
+      <header class="header" style="margin-top: 2rem; text-align: center">
+        <h1>EMI CALCULATORS FOR HOME LOAN</h1>
+      </header>
+    </div>
+    <script src="./calx_files/highcharts.js.download"></script>
+
+    <div class="content_block">
+      <div class="wraper">
+        <!-- Vertical Tabs -->
+        <div
+          class="services_option2 vertical_tabs"
+          style="display: inline-block"
+          onmousedown="validate()"
+        >
+          <h4>EMI CALCULATORS FOR HOME LOAN</h4>
+          <div
+            id="tabs"
+            class="ui-tabs ui-corner-all ui-widget ui-widget-content"
+          >
+            <ul
+              class="
+                tab_select
+                ui-tabs-nav
+                ui-corner-all
+                ui-helper-reset
+                ui-helper-clearfix
+                ui-widget-header
+              "
+              role="tablist"
+            >
+              <li
+                class="
+                  active
+                  ui-tabs-tab
+                  ui-corner-top
+                  ui-state-default
+                  ui-tab
+                  ui-tabs-active
+                  ui-state-active
+                "
+                role="tab"
+                tabindex="0"
+                aria-controls="tab-1"
+                aria-labelledby="ui-id-1"
+                aria-selected="true"
+                aria-expanded="true"
+              >
+                <a
+                  href="http://localhost/calculatortest/index.php#tab-1"
+                  role="presentation"
+                  tabindex="-1"
+                  class="ui-tabs-anchor"
+                  id="ui-id-1"
+                  >HOME LOAN</a
+                >
+              </li>
+            </ul>
+            <div
+              id="tab-1"
+              aria-labelledby="ui-id-1"
+              role="tabpanel"
+              class="ui-tabs-panel ui-corner-bottom ui-widget-content"
+              aria-hidden="false"
+            >
+              <p id="amount">
+                <label
+                  >HOME LOAN AMOUNT<img src="./calx_files/rupee-indian (1).png"
+                /></label>
+                <input type="text" id="amount_input" />
+              </p>
+
+              <div id="slidermain">
+                <div
+                  id="selector"
+                  class="
+                    ui-slider
+                    ui-corner-all
+                    ui-slider-horizontal
+                    ui-widget
+                    ui-widget-content
+                  "
+                >
+                  <div class="selectBtn"></div>
+                  <div
+                    class="
+                      ui-slider-range
+                      ui-corner-all
+                      ui-widget-header
+                      ui-slider-range-min
+                    "
+                    style="width: 24.6231%"
+                  ></div>
+                  <span
+                    tabindex="0"
+                    class="ui-slider-handle ui-corner-all ui-state-default"
+                    style="left: 24.6231%"
+                  ></span>
+                </div>
+              </div>
+              <p id="rate">
+                <label
+                  >INTEREST RATE<img
+                    src="./calx_files/percent-sign.png" /></label
+                ><input type="text" id="percent" value="18" />
+              </p>
+              <div id="sliderrate">
+                <div
+                  id="selector_rate"
+                  class="
+                    ui-slider
+                    ui-corner-all
+                    ui-slider-horizontal
+                    ui-widget
+                    ui-widget-content
+                  "
+                >
+                  <div class="selectBtn"></div>
+                  <div
+                    class="
+                      ui-slider-range
+                      ui-corner-all
+                      ui-widget-header
+                      ui-slider-range-min
+                    "
+                    style="width: 40%"
+                  ></div>
+                  <span
+                    tabindex="0"
+                    class="ui-slider-handle ui-corner-all ui-state-default"
+                    style="left: 40%"
+                  ></span>
+                </div>
+              </div>
+              <p id="tenure">
+                <label
+                  >LOAN TENURE&nbsp;<img
+                    src="./calx_files/calendar-interface-symbol-tool.png" /></label
+                ><input type="text" id="period" value="12" />
+              </p>
+              <input
+                type="radio"
+                id="month"
+                name="d"
+                value="month"
+                onchange="month ()"
+              /><label>Month</label>
+              <input
+                type="radio"
+                id="year"
+                name="d"
+                value="year"
+                checked=""
+                onchange="year()"
+              /><label>Year</label>
+              <div id="slider_tenure">
+                <div
+                  id="selector_tenure"
+                  class="
+                    ui-slider
+                    ui-corner-all
+                    ui-slider-horizontal
+                    ui-widget
+                    ui-widget-content
+                  "
+                >
+                  <div class="selectBtn"></div>
+                  <div
+                    class="
+                      ui-slider-range
+                      ui-corner-all
+                      ui-widget-header
+                      ui-slider-range-min
+                    "
+                    style="width: 13.7931%"
+                  ></div>
+                  <span
+                    tabindex="0"
+                    class="ui-slider-handle ui-corner-all ui-state-default"
+                    style="left: 13.7931%"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="output">
+          <div style="position: relative">
+            <div
+              dir="ltr"
+              style="position: relative; width: 300px; height: 280px"
+            >
+              <div
+                aria-label="A chart."
+                style="
+                  position: absolute;
+                  left: 0px;
+                  top: 0px;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <svg
+                  width="300"
+                  height="280"
+                  aria-label="A chart."
+                  style="overflow: hidden"
+                >
+                  <defs id="_ABSTRACT_RENDERER_ID_0"></defs>
+                  <rect
+                    x="0"
+                    y="0"
+                    width="300"
+                    height="280"
+                    stroke="none"
+                    stroke-width="0"
+                    fill="#ffffff"
+                  ></rect>
+                  <g>
+                    <text
+                      text-anchor="start"
+                      x="58"
+                      y="23.85"
+                      font-family="Arial"
+                      font-size="11"
+                      font-weight="bold"
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#000000"
+                    >
+                      Break-up of total
+                    </text>
+                    <text
+                      text-anchor="start"
+                      x="58"
+                      y="37.85"
+                      font-family="Arial"
+                      font-size="11"
+                      font-weight="bold"
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#000000"
+                    >
+                      payment
+                    </text>
+                    <rect
+                      x="58"
+                      y="14.5"
+                      width="185"
+                      height="25"
+                      stroke="none"
+                      stroke-width="0"
+                      fill-opacity="0"
+                      fill="#ffffff"
+                    ></rect>
+                  </g>
+                  <g>
+                    <rect
+                      x="190"
+                      y="54"
+                      width="53"
+                      height="57"
+                      stroke="none"
+                      stroke-width="0"
+                      fill-opacity="0"
+                      fill="#ffffff"
+                    ></rect>
+                    <g column-id="total interest">
+                      <rect
+                        x="190"
+                        y="54"
+                        width="53"
+                        height="25"
+                        stroke="none"
+                        stroke-width="0"
+                        fill-opacity="0"
+                        fill="#ffffff"
+                      ></rect>
+                      <g>
+                        <text
+                          text-anchor="start"
+                          x="205"
+                          y="63.35"
+                          font-family="Arial"
+                          font-size="11"
+                          stroke="none"
+                          stroke-width="0"
+                          fill="#222222"
+                        >
+                          total
+                        </text>
+                        <text
+                          text-anchor="start"
+                          x="205"
+                          y="77.35"
+                          font-family="Arial"
+                          font-size="11"
+                          stroke="none"
+                          stroke-width="0"
+                          fill="#222222"
+                        >
+                          int…
+                        </text>
+                        <rect
+                          x="205"
+                          y="54"
+                          width="38"
+                          height="25"
+                          stroke="none"
+                          stroke-width="0"
+                          fill-opacity="0"
+                          fill="#ffffff"
+                        ></rect>
+                      </g>
+                      <circle
+                        cx="195.5"
+                        cy="59.5"
+                        r="5.5"
+                        stroke="none"
+                        stroke-width="0"
+                        fill="#3366cc"
+                      ></circle>
+                    </g>
+                    <g column-id="Total Amount">
+                      <rect
+                        x="190"
+                        y="86"
+                        width="53"
+                        height="25"
+                        stroke="none"
+                        stroke-width="0"
+                        fill-opacity="0"
+                        fill="#ffffff"
+                      ></rect>
+                      <g>
+                        <text
+                          text-anchor="start"
+                          x="205"
+                          y="95.35"
+                          font-family="Arial"
+                          font-size="11"
+                          stroke="none"
+                          stroke-width="0"
+                          fill="#222222"
+                        >
+                          Total
+                        </text>
+                        <text
+                          text-anchor="start"
+                          x="205"
+                          y="109.35"
+                          font-family="Arial"
+                          font-size="11"
+                          stroke="none"
+                          stroke-width="0"
+                          fill="#222222"
+                        >
+                          A…
+                        </text>
+                        <rect
+                          x="205"
+                          y="86"
+                          width="38"
+                          height="25"
+                          stroke="none"
+                          stroke-width="0"
+                          fill-opacity="0"
+                          fill="#ffffff"
+                        ></rect>
+                      </g>
+                      <circle
+                        cx="195.5"
+                        cy="91.5"
+                        r="5.5"
+                        stroke="none"
+                        stroke-width="0"
+                        fill="#dc3912"
+                      ></circle>
+                    </g>
+                  </g>
+                  <g>
+                    <path
+                      d="M115,141L115,84A57,57,0,0,1,167.89985995316107,119.7725456793344L115,141A0,0,0,0,0,115,141"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      fill="#3366cc"
+                    ></path>
+                  </g>
+                  <g>
+                    <path
+                      d="M115,141L167.89985995316107,119.7725456793344A57,57,0,1,1,115,84L115,141A0,0,0,1,0,115,141"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      fill="#dc3912"
+                    ></path>
+                    <text
+                      text-anchor="start"
+                      x="77.09527681439933"
+                      y="165.41207896970207"
+                      font-family="Arial"
+                      font-size="11"
+                      stroke="none"
+                      stroke-width="0"
+                      fill="#ffffff"
+                    >
+                      81.1%
+                    </text>
+                  </g>
+                  <g></g>
+                </svg>
+                <div
+                  aria-label="A tabular representation of the data in the chart."
+                  style="
+                    position: absolute;
+                    left: -10000px;
+                    top: auto;
+                    width: 1px;
+                    height: 1px;
+                    overflow: hidden;
+                  "
+                >
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Amount</th>
+                        <th>value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>total interest</td>
+                        <td>1,522,726.922</td>
+                      </tr>
+                      <tr>
+                        <td>Total Amount</td>
+                        <td>6,522,726.922</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              style="
+                display: none;
+                position: absolute;
+                top: 290px;
+                left: 310px;
+                white-space: nowrap;
+                font-family: Arial;
+                font-size: 11px;
+              "
+            >
+              Am…
+            </div>
+          </div>
+        </div>
+        <hr />
+        <figure class="highcharts-figure">
+          <div
+            id="container"
+            data-highcharts-chart="0"
+            style="overflow: hidden"
+          >
+            <div
+              id="highcharts-ut6ri20-0"
+              dir="ltr"
+              class="highcharts-container"
+              style="
+                position: relative;
+                overflow: hidden;
+                width: 800px;
+                height: 400px;
+                text-align: left;
+                line-height: normal;
+                z-index: 0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                user-select: none;
+              "
+            >
+              <svg
+                version="1.1"
+                class="highcharts-root"
+                style="
+                  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial,
+                    Helvetica, sans-serif;
+                  font-size: 12px;
+                "
+                xmlns="http://www.w3.org/2000/svg"
+                width="800"
+                height="400"
+                viewBox="0 0 800 400"
+              >
+                <desc>Created with Highcharts 9.0.1</desc>
+                <defs>
+                  <clippath id="highcharts-ut6ri20-1-">
+                    <rect
+                      x="0"
+                      y="0"
+                      width="594"
+                      height="291"
+                      fill="none"
+                    ></rect>
+                  </clippath>
+                </defs>
+                <rect
+                  fill="#ffffff"
+                  class="highcharts-background"
+                  x="0"
+                  y="0"
+                  width="800"
+                  height="400"
+                  rx="0"
+                  ry="0"
+                ></rect>
+                <rect
+                  fill="none"
+                  class="highcharts-plot-background"
+                  x="103"
+                  y="72"
+                  width="594"
+                  height="291"
+                ></rect>
+                <g
+                  class="highcharts-grid highcharts-xaxis-grid"
+                  data-z-index="1"
+                >
+                  <path
+                    fill="none"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 156.5 72 L 156.5 363"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 253.5 72 L 253.5 363"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 350.5 72 L 350.5 363"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 448.5 72 L 448.5 363"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 545.5 72 L 545.5 363"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 642.5 72 L 642.5 363"
+                    opacity="1"
+                  ></path>
+                </g>
+                <g
+                  class="highcharts-grid highcharts-yaxis-grid"
+                  data-z-index="1"
+                >
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 363.5 L 697 363.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 305.5 L 697 305.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 247.5 L 697 247.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 188.5 L 697 188.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 130.5 L 697 130.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 71.5 L 697 71.5"
+                    opacity="1"
+                  ></path>
+                </g>
+                <g
+                  class="highcharts-grid highcharts-yaxis-grid"
+                  data-z-index="1"
+                >
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 363.5 L 697 363.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 305.5 L 697 305.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 247.5 L 697 247.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 188.5 L 697 188.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 130.5 L 697 130.5"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    stroke="#e6e6e6"
+                    stroke-width="1"
+                    data-z-index="1"
+                    class="highcharts-grid-line"
+                    d="M 103 71.5 L 697 71.5"
+                    opacity="1"
+                  ></path>
+                </g>
+                <rect
+                  fill="none"
+                  class="highcharts-plot-border"
+                  data-z-index="1"
+                  x="103"
+                  y="72"
+                  width="594"
+                  height="291"
+                ></rect>
+                <g class="highcharts-axis highcharts-xaxis" data-z-index="2">
+                  <path
+                    fill="none"
+                    class="highcharts-tick"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    d="M 156.5 363 L 156.5 373"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="highcharts-tick"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    d="M 253.5 363 L 253.5 373"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="highcharts-tick"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    d="M 350.5 363 L 350.5 373"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="highcharts-tick"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    d="M 448.5 363 L 448.5 373"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="highcharts-tick"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    d="M 545.5 363 L 545.5 373"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="highcharts-tick"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    d="M 642.5 363 L 642.5 373"
+                    opacity="1"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="highcharts-axis-line"
+                    stroke="#ccd6eb"
+                    stroke-width="1"
+                    data-z-index="7"
+                    d="M 103 363.5 L 697 363.5"
+                  ></path>
+                </g>
+                <g class="highcharts-axis highcharts-yaxis" data-z-index="2">
+                  <text
+                    x="29.359375"
+                    data-z-index="7"
+                    text-anchor="middle"
+                    transform="translate(0,0) rotate(270 29.359375 217.5)"
+                    class="highcharts-axis-title"
+                    style="color: #434348; fill: #434348"
+                    y="217.5"
+                  >
+                    Balance
+                  </text>
+                  <path
+                    fill="none"
+                    class="highcharts-axis-line"
+                    data-z-index="7"
+                    d="M 103 72 L 103 363"
+                  ></path>
+                </g>
+                <g class="highcharts-axis highcharts-yaxis" data-z-index="2">
+                  <text
+                    x="770.640625"
+                    data-z-index="7"
+                    text-anchor="middle"
+                    transform="translate(0,0) rotate(90 770.640625 217.5)"
+                    class="highcharts-axis-title"
+                    style="color: #7cb5ec; fill: #7cb5ec"
+                    y="217.5"
+                  >
+                    Emi Payment/Year
+                  </text>
+                  <path
+                    fill="none"
+                    class="highcharts-axis-line"
+                    data-z-index="7"
+                    d="M 697 72 L 697 363"
+                  ></path>
+                </g>
+                <path
+                  fill="none"
+                  class="
+                    highcharts-crosshair highcharts-crosshair-thin
+                    undefined
+                  "
+                  data-z-index="2"
+                  stroke="#cccccc"
+                  stroke-width="1"
+                  style="pointer-events: none"
+                  visibility="hidden"
+                  d="M 545.5 72 L 545.5 363"
+                ></path>
+                <g class="highcharts-series-group" data-z-index="3">
+                  <g
+                    class="
+                      highcharts-series
+                      highcharts-series-0
+                      highcharts-column-series
+                      highcharts-color-0
+                      highcharts-tracker
+                    "
+                    data-z-index="0.1"
+                    opacity="1"
+                    transform="translate(103,72) scale(1 1)"
+                    clip-path="url(#highcharts-ut6ri20-1-)"
+                  >
+                    <rect
+                      x="29.5"
+                      y="122.5"
+                      width="47"
+                      height="169"
+                      fill="#7cb5ec"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-0"
+                    ></rect>
+                    <rect
+                      x="127.5"
+                      y="38.5"
+                      width="47"
+                      height="253"
+                      fill="#7cb5ec"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-0"
+                    ></rect>
+                    <rect
+                      x="224.5"
+                      y="38.5"
+                      width="47"
+                      height="253"
+                      fill="#7cb5ec"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-0"
+                    ></rect>
+                    <rect
+                      x="321.5"
+                      y="38.5"
+                      width="47"
+                      height="253"
+                      fill="rgb(124,181,236)"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-0"
+                    ></rect>
+                    <rect
+                      x="419.5"
+                      y="38.5"
+                      width="47"
+                      height="253"
+                      fill="rgb(124,181,236)"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-0"
+                    ></rect>
+                    <rect
+                      x="516.5"
+                      y="207.5"
+                      width="47"
+                      height="84"
+                      fill="rgb(124,181,236)"
+                      stroke="#ffffff"
+                      stroke-width="1"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-0"
+                    ></rect>
+                  </g>
+                  <g
+                    class="
+                      highcharts-markers
+                      highcharts-series-0
+                      highcharts-column-series
+                      highcharts-color-0
+                    "
+                    data-z-index="0.1"
+                    opacity="1"
+                    transform="translate(103,72) scale(1 1)"
+                    clip-path="none"
+                  ></g>
+                  <g
+                    class="
+                      highcharts-series
+                      highcharts-series-1
+                      highcharts-spline-series
+                      highcharts-color-1
+                    "
+                    data-z-index="0.1"
+                    opacity="1"
+                    transform="translate(103,72) scale(1 1)"
+                    clip-path="url(#highcharts-ut6ri20-1-)"
+                  >
+                    <path
+                      fill="none"
+                      d="M 53.55737704918 30.23303759999999 C 53.55737704918 30.23303759999999 111.983606557378 58.90057668000002 150.93442622951 79.92920280000001 C 189.885245901642 100.95782892000003 209.36065573770802 111.91413023999883 248.31147540984 135.3761682 C 287.26229508196803 158.8382061599988 306.737704918032 171.06235956000137 345.68852459016 197.2393926 C 384.639344262292 223.41642564000134 404.114754098358 247.50921192000004 443.06557377049 266.2613334 C 482.016393442622 285.01345488000004 540.44262295082 291 540.44262295082 291"
+                      class="highcharts-graph"
+                      data-z-index="1"
+                      stroke="#434348"
+                      stroke-width="2"
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                    ></path>
+                    <path
+                      fill="none"
+                      d="M 53.55737704918 30.23303759999999 C 53.55737704918 30.23303759999999 111.983606557378 58.90057668000002 150.93442622951 79.92920280000001 C 189.885245901642 100.95782892000003 209.36065573770802 111.91413023999883 248.31147540984 135.3761682 C 287.26229508196803 158.8382061599988 306.737704918032 171.06235956000137 345.68852459016 197.2393926 C 384.639344262292 223.41642564000134 404.114754098358 247.50921192000004 443.06557377049 266.2613334 C 482.016393442622 285.01345488000004 540.44262295082 291 540.44262295082 291"
+                      visibility="visible"
+                      data-z-index="2"
+                      class="highcharts-tracker-line"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="rgba(192,192,192,0.0001)"
+                      stroke-width="22"
+                    ></path>
+                  </g>
+                  <g
+                    class="
+                      highcharts-markers
+                      highcharts-series-1
+                      highcharts-spline-series
+                      highcharts-color-1
+                      highcharts-tracker
+                    "
+                    data-z-index="0.1"
+                    opacity="1"
+                    transform="translate(103,72) scale(1 1)"
+                  >
+                    <path
+                      fill="#434348"
+                      d="M 443 266.2613334 A 0 0 0 1 1 443 266.2613334 Z"
+                      class="highcharts-halo highcharts-color-1"
+                      data-z-index="-1"
+                      fill-opacity="0.25"
+                      visibility="hidden"
+                    ></path>
+                    <path
+                      fill="#434348"
+                      d="M 53 34 A 4 4 0 1 1 53.00399999933334 33.99999800000017 Z"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-1"
+                    ></path>
+                    <path
+                      fill="#434348"
+                      d="M 150 84 A 4 4 0 1 1 150.00399999933333 83.99999800000016 Z"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-1"
+                    ></path>
+                    <path
+                      fill="#434348"
+                      d="M 248 139 A 4 4 0 1 1 248.00399999933333 138.99999800000018 Z"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-1"
+                    ></path>
+                    <path
+                      fill="#434348"
+                      d="M 345 201.2393926 A 4 4 0 1 1 345.00399999933336 201.23939060000018 Z"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-1"
+                      stroke-width="0.0025244915093498577"
+                    ></path>
+                    <path
+                      fill="#434348"
+                      d="M 443 270.2613334 A 4 4 0 1 1 443.00399999933336 270.2613314000002 Z"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-1"
+                      stroke-width="9.660929309804334e-7"
+                    ></path>
+                    <path
+                      fill="#434348"
+                      d="M 540 295 A 4 4 0 1 1 540.0039999993334 294.9999980000002 Z"
+                      opacity="1"
+                      class="highcharts-point highcharts-color-1"
+                      stroke-width="0.002849604801500538"
+                    ></path>
+                  </g>
+                </g>
+                <text
+                  x="400"
+                  text-anchor="middle"
+                  class="highcharts-title"
+                  data-z-index="4"
+                  style="color: #333333; font-size: 18px; fill: #333333"
+                  y="24"
+                >
+                  Your Repayment Details (Yearly/Monthly)
+                </text>
+                <text
+                  x="400"
+                  text-anchor="middle"
+                  class="highcharts-subtitle"
+                  data-z-index="4"
+                  style="color: #666666; fill: #666666"
+                  y="56"
+                >
+                  Your debt repayment schedule in regular instalments over a
+                  period of time.
+                </text>
+                <text
+                  x="10"
+                  text-anchor="start"
+                  class="highcharts-caption"
+                  data-z-index="4"
+                  style="color: #666666; fill: #666666"
+                  y="401"
+                ></text>
+                <g
+                  class="highcharts-legend"
+                  data-z-index="7"
+                  transform="translate(130,110)"
+                >
+                  <rect
+                    fill="rgba(255,255,255,0.25)"
+                    class="highcharts-legend-box"
+                    rx="0"
+                    ry="0"
+                    x="0"
+                    y="0"
+                    width="121"
+                    height="49"
+                    visibility="visible"
+                  ></rect>
+                  <g data-z-index="1">
+                    <g>
+                      <g
+                        class="
+                          highcharts-legend-item
+                          highcharts-column-series
+                          highcharts-color-0
+                          highcharts-series-0
+                        "
+                        data-z-index="1"
+                        transform="translate(8,3)"
+                      >
+                        <text
+                          x="21"
+                          style="
+                            color: #333333;
+                            cursor: pointer;
+                            font-size: 12px;
+                            font-weight: bold;
+                            fill: #333333;
+                          "
+                          text-anchor="start"
+                          data-z-index="2"
+                          y="15"
+                        >
+                          total payment
+                        </text>
+                        <rect
+                          x="2"
+                          y="4"
+                          width="12"
+                          height="12"
+                          fill="#7cb5ec"
+                          rx="6"
+                          ry="6"
+                          class="highcharts-point"
+                          data-z-index="3"
+                        ></rect>
+                      </g>
+                      <g
+                        class="
+                          highcharts-legend-item
+                          highcharts-spline-series
+                          highcharts-color-1
+                          highcharts-series-1
+                        "
+                        data-z-index="1"
+                        transform="translate(8,22)"
+                      >
+                        <path
+                          fill="none"
+                          d="M 0 11 L 16 11"
+                          class="highcharts-graph"
+                          stroke="#434348"
+                          stroke-width="2"
+                        ></path>
+                        <path
+                          fill="#434348"
+                          d="M 8 15 A 4 4 0 1 1 8.003999999333336 14.999998000000167 Z"
+                          class="highcharts-point"
+                          opacity="1"
+                        ></path>
+                        <text
+                          x="21"
+                          y="15"
+                          style="
+                            color: #333333;
+                            cursor: pointer;
+                            font-size: 12px;
+                            font-weight: bold;
+                            fill: #333333;
+                          "
+                          text-anchor="start"
+                          data-z-index="2"
+                        >
+                          Balance
+                        </text>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <g
+                  class="highcharts-axis-labels highcharts-xaxis-labels"
+                  data-z-index="7"
+                >
+                  <text
+                    x="156.55737704918"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="middle"
+                    transform="translate(0,0)"
+                    y="382"
+                    opacity="1"
+                  >
+                    2021
+                  </text>
+                  <text
+                    x="253.93442622951"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="middle"
+                    transform="translate(0,0)"
+                    y="382"
+                    opacity="1"
+                  >
+                    2022
+                  </text>
+                  <text
+                    x="351.31147540984"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="middle"
+                    transform="translate(0,0)"
+                    y="382"
+                    opacity="1"
+                  >
+                    2023
+                  </text>
+                  <text
+                    x="448.68852459016"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="middle"
+                    transform="translate(0,0)"
+                    y="382"
+                    opacity="1"
+                  >
+                    2024
+                  </text>
+                  <text
+                    x="546.06557377049"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="middle"
+                    transform="translate(0,0)"
+                    y="382"
+                    opacity="1"
+                  >
+                    2025
+                  </text>
+                  <text
+                    x="643.44262295082"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="middle"
+                    transform="translate(0,0)"
+                    y="382"
+                    opacity="1"
+                  >
+                    2026
+                  </text>
+                </g>
+                <g
+                  class="highcharts-axis-labels highcharts-yaxis-labels"
+                  data-z-index="7"
+                >
+                  <text
+                    x="88"
+                    style="
+                      color: #434348;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #434348;
+                    "
+                    text-anchor="end"
+                    transform="translate(0,0)"
+                    y="367"
+                    opacity="1"
+                  >
+                    0
+                  </text>
+                  <text
+                    x="88"
+                    style="
+                      color: #434348;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #434348;
+                    "
+                    text-anchor="end"
+                    transform="translate(0,0)"
+                    y="309"
+                    opacity="1"
+                  >
+                    896120
+                  </text>
+                  <text
+                    x="88"
+                    style="
+                      color: #434348;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #434348;
+                    "
+                    text-anchor="end"
+                    transform="translate(0,0)"
+                    y="251"
+                    opacity="1"
+                  >
+                    1792240
+                  </text>
+                  <text
+                    x="88"
+                    style="
+                      color: #434348;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #434348;
+                    "
+                    text-anchor="end"
+                    transform="translate(0,0)"
+                    y="192"
+                    opacity="1"
+                  >
+                    2688360
+                  </text>
+                  <text
+                    x="88"
+                    style="
+                      color: #434348;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #434348;
+                    "
+                    text-anchor="end"
+                    transform="translate(0,0)"
+                    y="134"
+                    opacity="1"
+                  >
+                    3584480
+                  </text>
+                  <text
+                    x="88"
+                    style="
+                      color: #434348;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #434348;
+                    "
+                    text-anchor="end"
+                    transform="translate(0,0)"
+                    y="76"
+                    opacity="1"
+                  >
+                    4480600
+                  </text>
+                </g>
+                <g
+                  class="highcharts-axis-labels highcharts-yaxis-labels"
+                  data-z-index="7"
+                >
+                  <text
+                    x="712"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="start"
+                    transform="translate(0,0)"
+                    y="367"
+                    opacity="1"
+                  >
+                    0
+                  </text>
+                  <text
+                    x="712"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="start"
+                    transform="translate(0,0)"
+                    y="309"
+                    opacity="1"
+                  >
+                    260920
+                  </text>
+                  <text
+                    x="712"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="start"
+                    transform="translate(0,0)"
+                    y="251"
+                    opacity="1"
+                  >
+                    521840
+                  </text>
+                  <text
+                    x="712"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="start"
+                    transform="translate(0,0)"
+                    y="192"
+                    opacity="1"
+                  >
+                    782760
+                  </text>
+                  <text
+                    x="712"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="start"
+                    transform="translate(0,0)"
+                    y="134"
+                    opacity="1"
+                  >
+                    1043680
+                  </text>
+                  <text
+                    x="712"
+                    style="
+                      color: #666666;
+                      cursor: default;
+                      font-size: 11px;
+                      fill: #666666;
+                    "
+                    text-anchor="start"
+                    transform="translate(0,0)"
+                    y="76"
+                    opacity="1"
+                  >
+                    1304600
+                  </text>
+                </g>
+                <text
+                  x="790"
+                  class="highcharts-credits"
+                  text-anchor="end"
+                  data-z-index="8"
+                  style="
+                    cursor: pointer;
+                    color: #999999;
+                    font-size: 9px;
+                    fill: #999999;
+                  "
+                  y="395"
+                >
+                  Highcharts.com
+                </text>
+                <g
+                  class="highcharts-label highcharts-tooltip highcharts-color-0"
+                  style="
+                    cursor: default;
+                    white-space: nowrap;
+                    pointer-events: none;
+                  "
+                  data-z-index="8"
+                  transform="translate(333,-9999)"
+                  opacity="0"
+                  visibility="hidden"
+                >
+                  <path
+                    fill="none"
+                    class="
+                      highcharts-label-box
+                      highcharts-tooltip-box
+                      highcharts-shadow
+                    "
+                    d="M 3.5 0.5 L 204.5 0.5 C 207.5 0.5 207.5 0.5 207.5 3.5 L 207.5 60.5 C 207.5 63.5 207.5 63.5 204.5 63.5 L 3.5 63.5 C 0.5 63.5 0.5 63.5 0.5 60.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
+                    stroke="#000000"
+                    stroke-opacity="0.049999999999999996"
+                    stroke-width="5"
+                    transform="translate(1, 1)"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="
+                      highcharts-label-box
+                      highcharts-tooltip-box
+                      highcharts-shadow
+                    "
+                    d="M 3.5 0.5 L 204.5 0.5 C 207.5 0.5 207.5 0.5 207.5 3.5 L 207.5 60.5 C 207.5 63.5 207.5 63.5 204.5 63.5 L 3.5 63.5 C 0.5 63.5 0.5 63.5 0.5 60.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
+                    stroke="#000000"
+                    stroke-opacity="0.09999999999999999"
+                    stroke-width="3"
+                    transform="translate(1, 1)"
+                  ></path>
+                  <path
+                    fill="none"
+                    class="
+                      highcharts-label-box
+                      highcharts-tooltip-box
+                      highcharts-shadow
+                    "
+                    d="M 3.5 0.5 L 204.5 0.5 C 207.5 0.5 207.5 0.5 207.5 3.5 L 207.5 60.5 C 207.5 63.5 207.5 63.5 204.5 63.5 L 3.5 63.5 C 0.5 63.5 0.5 63.5 0.5 60.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
+                    stroke="#000000"
+                    stroke-opacity="0.15"
+                    stroke-width="1"
+                    transform="translate(1, 1)"
+                  ></path>
+                  <path
+                    fill="rgba(247,247,247,0.85)"
+                    class="highcharts-label-box highcharts-tooltip-box"
+                    d="M 3.5 0.5 L 204.5 0.5 C 207.5 0.5 207.5 0.5 207.5 3.5 L 207.5 60.5 C 207.5 63.5 207.5 63.5 204.5 63.5 L 3.5 63.5 C 0.5 63.5 0.5 63.5 0.5 60.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5"
+                    stroke="#7cb5ec"
+                    stroke-width="1"
+                  ></path>
+                  <text
+                    x="8"
+                    data-z-index="1"
+                    y="20"
+                    style="color: #333333; font-size: 12px; fill: #333333"
+                  >
+                    <tspan style="font-size: 10px">4</tspan>
+                    <tspan class="highcharts-br" dy="15" x="8">​</tspan>
+                    <tspan style="fill: #7cb5ec">●</tspan>
+                    total payment:
+                    <tspan style="font-weight: bold">1 304 545 mm</tspan>
+                    <tspan class="highcharts-br" dy="15" x="8">​</tspan>
+                    <tspan style="fill: #434348">●</tspan>
+                    Balance:
+                    <tspan style="font-weight: bold">425 063</tspan>
+                    <tspan class="highcharts-br">​</tspan>
+                  </text>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <p class="highcharts-description">
+            Chart showing a combination of a column and a line chart, using
+            multiple y-axes. Using multiple axes allows for data within
+            different ranges to be visualized together.
+          </p>
+        </figure>
+        <!-- contact_us -->
+        
+          <div id="divtable" style="margin-top: 5rem;"></div>
+        
+      </div>
+    </div>
+    <script>
+      $(function () {
+        $("#selector").slider({
+          range: "min",
+          value: 5000000,
+          min: 100000,
+          max: 20000000,
+
+          slide: function (event, ui) {
+            $("#amount_input").val(ui.value);
+          },
+        });
+        $("#amount_input").val($("#selector").slider("value"));
+        $("#amount_input").on("input", function () {
+          $("#selector").slider("value", $(this).val());
+        });
+      });
+
+      $(function () {
+        $("#selector_rate").slider({
+          range: "min",
+          value: 10.5,
+          min: 5,
+          max: 20,
+
+          slide: function (event, ui) {
+            $("#percent").val(ui.value);
+          },
+        });
+        $("#percent").val($("#selector_rate").slider("value"));
+        $("#percent").on("input", function () {
+          $("#selector_rate").slider("value", $(this).val());
+        });
+      });
+
+      $(function () {
+        $("#selector_tenure").slider({
+          range: "min",
+          value: 5,
+          min: 1,
+          max: 30,
+
+          slide: function (event, ui) {
+            $("#period").val(ui.value);
+          },
+        });
+        $("#period").val($("#selector_tenure").slider("value"));
+        $("#period").on("input", function () {
+          $("#selector_tenure").slider("value", $(this).val());
+        });
+      });
+    </script>
+    <script>
+      $(function () {
+        $("#tabs").tabs();
+      });
+    </script>
+  </body>
+</html>
